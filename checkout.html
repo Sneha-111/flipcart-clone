@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="checkout.css">
+  </head>
+  <body>
+    <nav class="navbar">
+      
+        <img
+          src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fkheaderlogo_exploreplus-44005d.svg"
+          alt=""
+        />
+      
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="product.html">Product</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </nav>
+    <div class="checkout-container">
+        <h1>checkout</h1>
+
+        <div class="checkout-wrapper">
+            <!--form-->
+            <div class="shipping-info">
+                <h2>shipping details</h2>
+                <form id="checkoutform">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <input type="text" placeholder="Phone Number" required>
+                    <input type="text" placeholder="Address Line 1" required>
+                    <input type="text" placeholder="Address Line 2" required>
+                    <input type="text" placeholder="City" required>
+                    <input type="text" placeholder="State" required>
+                    <input type="text" placeholder="Postal Code" required>
+                </form>
+            </div>
+
+            <!--order summary-->
+            <div class="order-summary">
+                <h2>Order Summary</h2>
+                <div id="summaryItems"></div>
+                <div id="summaryTotal" class="Summary-total"></div>
+                <button onclick="placeOrder()">Place Order</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function loadSummary() {
+            let cart = JSON.parse(localStorage.getItem("cart"))  || [];
+            const summaryItems = document.getElementById("summaryItems");
+            const summaryTotal = document.getElementById("summaryTotal");
+
+            if (cart.length == 0) {
+                summaryItems.innerHTML ="<p>Your cart is empty</p>"
+                summaryTotal.innerHTML ="";
+                return;
+            }
+
+            let total = 0;
+            summaryItems.innerHTML = cart.map(item => {
+                total += item.price;
+                return `
+                <div class="summary-item">
+                    <span class="text">${item.name}</span>
+                    <span class="text">${item.price}</span>
+                </div>
+                `
+            }).join("");
+
+            summaryTotal.innerHTML = `<strong class="text">Total:Rs ${total}</strong>`;
+
+        }
+
+        function placeOrder(){
+            alert("Order Placed Successfully! Thank You for Shopping with us");
+            localStorage.removeItem("cart");
+            window.location.href = "index.html"
+        }
+        loadSummary();
+    </script>
+</body>
+</head>
+    

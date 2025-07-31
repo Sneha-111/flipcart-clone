@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="product.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <img
+        src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fkheaderlogo_exploreplus-44005d.svg"
+        alt=""
+      />
+
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="product.html">Product</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </nav>
+
+    <div class="main-layout">
+      <aside class="sidebar">
+        <ul id="categorylist"></ul>
+      </aside>
+      <div class="main-content">
+        <h1>My Products</h1>
+        <div class="search-sort-bar>">
+          <input type="text" id="searchBox" placeholder="search....." />
+          <select id="sortSelect">
+            <option value="">Sort By</option>
+            <option value="lowToHigh">price: Low to High</option>
+            <option value="highToLow">price: High to Low</option>
+          </select>
+        </div>
+        <div id="products"></div>
+      </div>
+    </div>
+
+    <script src="product.js"></script>
+  </body>
+</html>
